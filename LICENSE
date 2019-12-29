@@ -1,23 +1,3 @@
-# Inko
-[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/made-with-vue.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/uses-js.svg)](https://forthebadge.com) [![Build Status](https://travis-ci.com/jrttk/inko.svg?branch=master)](https://travis-ci.com/jrttk/inko) [![MIT License](https://img.shields.io/badge/license-MIT_License-green.svg?style=flat-square)](https://github.com/jrttk/inko/blob/master/LICENSE)
-
-### Overview
-Inko is an online markdown editor that I made using Vue.js, Primer css framework and marked.js. Inko is currently in a beta testing phase. If you found any bug please drop me a message at **jirattikarn[at]mailbox[dot]org**
-
-## Features
-- Responsive
-- Realtime preview
-- Export .md file
-
-## Todo
-- [ ] Add line number feature
-- [x] Add Travis CI
-- [ ] Testing on most devices
-- [ ] Add import .md file feature
-- [ ] Add hotjar
-- [ ] Add full-screen mode
-
-## License
 MIT License
 
 Copyright (c) 2019 Jirattikarn Phasugmool.

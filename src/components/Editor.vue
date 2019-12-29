@@ -124,6 +124,12 @@ export default class App extends Vue {
     display: flex;
     flex-direction: column;
 
+    @media screen and (max-width: 720px) {
+      width: 100%;
+      height: 60vh;
+      position: relative;
+    }
+
     > div {
       position: relative;
 
@@ -183,22 +189,12 @@ export default class App extends Vue {
     right: 0; top: 0;
     overflow: hidden;
     overflow-y: scroll;
-  }
-}
 
-@media screen and (max-width: 720px) {
-  .inko-wrapper {
-    flex-direction: column;
-  }
-
-  .inko-editor {
-    height: 70vh;
-    max-height: 70vh;
-  }
-
-  .inko-content {
-    height: 70vh;
-    max-height: 70vh;
+    @media screen and (max-width: 720px) {
+      width: 100%;
+      height: 60vh;
+      position: relative;
+    }
   }
 }
 </style>
