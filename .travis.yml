@@ -1,24 +1,15 @@
-# deploy:
-#   provider: pages
-#   skip_cleanup: true
-#   keep_history: true
-#   on:
-#     branch: master
 language: node_js
 node_js:
-- "lts/*"
-cache:
-  directories:
-    - node_modules
-before_script:
-- npm install
-script:
-- npm run build
+ - "node"
+
+cache: npm
+
+script: npm run build
+
 deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN
-  target-branch: gh-pages
-  local_dir: dist
-  on:
-    branch: master
+ provider: pages
+ skip_cleanup: true
+ github_token: $GITHUB_TOKEN
+ local_dir: dist
+ on:
+   branch: master
