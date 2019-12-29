@@ -1,9 +1,15 @@
+# deploy:
+#   provider: pages
+#   skip_cleanup: true
+#   keep_history: true
+#   on:
+#     branch: master
 language: node_js
 node_js:
-- stable
+- "stable"
 cache:
   directories:
-  - node_modules
+    - node_modules
 before_script:
 - npm install
 script:
@@ -11,8 +17,7 @@ script:
 deploy:
   provider: pages
   skip_cleanup: true
-  github_token:
-    secure: "xGMhHK+Fn8AZmDjVc3F59nxkrXBLdbD0CfxZr/3tQkmEEhjOyEaSem0UQ/x3dLOH8fazMH4Ua/j8WrnGpjPjqz6gfxq1PuP/ksvq3cV/oSS3505Js9Z4HEh4TDG+Q6GlaeK6bti2wbDON4U4cJwWC5nOxiayfMZKyf6kfv+Zh/qeq2B/R+ic8YdfOtHnQNAf7ZZ5ONRE8kW9MPh2XH0ntRDnzONEU46+0GYpNR443LtcD7n4h3GimzB/K8DACADB0mZd7c5vTx9cXi84JTYNg4Ji7Fi/ZD7erJNUjPQKGhM7UoUQyRNdL1rZ/MaxauRhBpYLwz4V01clmh/YLu9Ewc4LYIHEQjRQgDxLVgxaVDpZjxkNUocEuDrtnfbD788tmYME2rLHoZhPrJaiEsuS7IzOAz3wv1jhSfNJJoqJiPZR1nKpdW+80UTcZ3NjI0JhMD9VHM7XV/9/2b2dsAcHnR01e1JUC32ZyzJczywNYMGhxkv0jEZhIrlz0oLRWKJWNcN7MIxEzMGwvPoKKN7l0leqJ6/JIFz3Ggr37PLCVSR/iTAHl+mOWuGiZ8RLId5gE9mmYxd9IbM6qkV7cM/YShKyNNm881WByL9RGn7vHncQx7uSjCzt3z1Gdb5jJVgFA99qNUzEhyomBozorJ3uOLessvW129p3pzx0LTb4MhU="
+  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
   keep_history: true
   on:
     branch: master
