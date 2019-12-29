@@ -1,9 +1,19 @@
-deploy:
-  provider: pages
-  skip_cleanup: true
-  keep_history: true
-  on:
-    branch: master
+# deploy:
+#   provider: pages
+#   skip_cleanup: true
+#   keep_history: true
+#   on:
+#     branch: master
+language: node_js
+node_js:
+- "stable"
+cache:
+  directories:
+    - node_modules
+before_script:
+- npm install
+script:
+- npm run build
 env:
   global:
     secure: IXQlDhsQaKeaFjrg/LzeqJub/hT9RMuTjcXNgvqJ/5tNq4uy4M7AMDVO0TRgAy1yGldXGY/3cT66t60tOe8QJ3c5Q1+wu3Wh8lrjr4RNahCzavg/URLlQ1hn5qLmz2k/Vs+74YistEmpay9e0sMEM7jgbjkaOCu1HPn2ovINhw1lt98+qoCJ4ujUQ7Z7SaZvyEf5PkXlzfsbgJxQIvFLTDI52YmWaYb9vC7OXo4i6WllTRMn9X6WkqjYNklA/6SEo+wH2aW8ysmHcQ0lpEshaCSW+5Jdt4hqW0DYCzRX5jf0DnTX/LDcPLoLYmYJacVpjjslBHAcDKX6zkPEAhHJgVopHtTd+yACZ+9D46FFXy9rUQqbbxFnls/QekdAATosv8SvtjyI2IdDoxywcW5wKmd/SCBC+FbgNwquE901AFioVTfiwr7W+Cfic17Mgn11a+6Tjd7W2T6PpNOsR4rjZM1lxZL5oVa28BUzD43oK+i2zWe8+nndgLq9mgs1ESxKQCnG8ooQpUhAl34Fzf5DzmuYkaBFSD05G1bgJqX8QA3Wm8pufSU06gdJbevX6IEy6PCYpdmfvN1sPNBwBkPeXuGF6TGJQyRx3nvOYaulGp7jICxoHl4n2r7BHlvXJ/usRl/1+W1aP0HvfQiUeG3443yF9YR6RtcdeVnFkKjQ5Uk=
