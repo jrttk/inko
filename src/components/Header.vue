@@ -7,14 +7,19 @@
       <span title="Label: default label" class="Label bg-blue">Beta</span>
     </div>
     <p>An online markdown editor built with Vue.js, Primer.css & Marked.js ✨</p>
-    <button class="btn btn-sm btn-primary mr-2" type="button" @click="downloadMDFile">
-      Export to .md
-      <i v-html="$octicons['markdown'].toSVG()" class="ml-1"></i>
-    </button>
-    <button class="btn btn-sm" type="button">
-      View source code
-      <i v-html="$octicons['mark-github'].toSVG()" class="ml-1"></i>
-    </button>
+    <div class="buttons">
+      <button class="btn btn-sm btn-primary mr-2" type="button" @click="downloadMDFile">
+        Export to .md
+        <i v-html="$octicons['markdown'].toSVG()" class="ml-1"></i>
+      </button>
+      <a href="https://github.com/jrttk/inko" class="btn btn-sm" type="button">
+        View source code
+        <i v-html="$octicons['mark-github'].toSVG()" class="ml-1"></i>
+      </a>
+      <a href="https://ko-fi.com/J3J11BAQP" class="kofi">
+        <img src="../assets/images/kofi.svg" alt="ko-fi" />
+      </a>
+    </div>
   </section>
 </template>
 
@@ -37,7 +42,10 @@ export default class Header extends Vue {
 
     element.setAttribute("download", "export.md");
     element.style.display = "none";
-    document.body.appendChild(element).click().removeChild(element);
+    document.body
+      .appendChild(element)
+      .click()
+      .removeChild(element);
   }
 }
 </script>
@@ -68,9 +76,40 @@ export default class Header extends Vue {
     display: inline-block;
     margin-right: 12px;
   }
-  
+
   span {
     margin-top: 8px;
+  }
+}
+
+.buttons {
+  @media screen and (max-width: 560px) {
+    > * {
+      display: block !important;
+      width: 100%;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    > .kofi {
+      text-align: center;
+      background: #ff5f5b;
+      border-radius: 4px;
+      margin: 0 0 !important;
+    }
+  }
+
+  .kofi {
+    display: inline-block;
+    line-height: 0;
+    vertical-align: middle;
+    margin: 0 8px;
+
+    img {
+      width: auto;
+      height: 28px;
+      border-radius: 4px;
+    }
   }
 }
 </style>

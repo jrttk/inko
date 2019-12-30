@@ -1,5 +1,9 @@
 # Inko
-[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/made-with-vue.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/uses-js.svg)](https://forthebadge.com) [![Build Status](https://travis-ci.com/jrttk/inko.svg?branch=master)](https://travis-ci.com/jrttk/inko) [![MIT License](https://img.shields.io/badge/license-MIT_License-green.svg?style=flat-square)](https://github.com/jrttk/inko/blob/master/LICENSE)
+[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/made-with-vue.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/uses-js.svg)](https://forthebadge.com)
+
+[![Build Status](https://travis-ci.com/jrttk/inko.svg?branch=master)](https://travis-ci.com/jrttk/inko) [![MIT License](https://img.shields.io/badge/license-MIT_License-green.svg?style=flat-square)](https://github.com/jrttk/inko/blob/master/LICENSE)
+
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/J3J11BAQP)
 
 ### Overview
 Inko is an online markdown editor that I made using Vue.js, Primer css framework and marked.js. Inko is currently in a beta testing phase. If you found any bug please drop me a message at **jirattikarn[at]mailbox[dot]org**
