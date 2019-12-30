@@ -10,7 +10,7 @@
     <Editor />
 
     <!-- Footer -->
-    <Footer />
+    <!-- <Footer /> -->
   </div>
 </template>
 
