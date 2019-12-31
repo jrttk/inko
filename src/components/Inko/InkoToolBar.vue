@@ -53,10 +53,10 @@ export default class InkoTool extends Vue {
 
     element.setAttribute("download", "export.md");
     element.style.display = "none";
-    return document.body
+    document.body
       .appendChild(element)
       .click()
-      .removeChild(element);
+    document.body.removeChild(element)
   }
 }
 </script>
