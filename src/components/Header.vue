@@ -8,10 +8,6 @@
     </div>
     <p>An online markdown editor built with Vue.js, Primer.css & Marked.js ✨</p>
     <div class="buttons">
-      <button class="btn btn-sm btn-primary mr-2" type="button" @click="downloadMDFile">
-        Export to .md
-        <i v-html="$octicons['markdown'].toSVG()" class="ml-1"></i>
-      </button>
       <a href="https://github.com/jrttk/inko" class="btn btn-sm" type="button">
         View source code
         <i v-html="$octicons['mark-github'].toSVG()" class="ml-1"></i>
@@ -29,25 +25,7 @@ import Component from "vue-class-component";
 import { Vue, Prop, Watch } from "vue-property-decorator";
 
 @Component()
-export default class Header extends Vue {
-  downloadMDFile() {
-    let { storedContent } = localStorage;
-
-    let element = document.createElement("a");
-
-    element.setAttribute(
-      "href",
-      "data:text/markdown;charset=utf-8," + encodeURIComponent(storedContent)
-    );
-
-    element.setAttribute("download", "export.md");
-    element.style.display = "none";
-    document.body
-      .appendChild(element)
-      .click()
-      .removeChild(element);
-  }
-}
+export default class Header extends Vue {}
 </script>
 
 <style lang="scss" scoped>
@@ -84,12 +62,21 @@ export default class Header extends Vue {
 
 .buttons {
   @media screen and (max-width: 560px) {
+    display: flex;
+    justify-content: space-between;
+
     > * {
-      display: block !important;
-      width: 100%;
-      margin-bottom: 12px;
+      flex: 1;
+      margin-left: 6px;
+      margin-right: 6px;
       text-align: center;
     }
+    // > * {
+    //   display: block !important;
+    //   width: 100%;
+    //   margin-bottom: 12px;
+    //   text-align: center;
+    // }
 
     > .kofi {
       text-align: center;

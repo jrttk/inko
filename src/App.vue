@@ -7,7 +7,7 @@
     <Header />
 
     <!-- Editor -->
-    <Editor />
+    <Inko />
 
     <!-- Footer -->
     <!-- <Footer /> -->
@@ -18,7 +18,7 @@
 // Components
 import Testing from "./components/Testing";
 import Header from "./components/Header";
-import Editor from "./components/Editor";
+import Inko from "./components/Inko/Inko";
 import Footer from "./components/Footer";
 
 // Vue
@@ -32,7 +32,7 @@ import marked from "marked";
   components: {
     Testing,
     Header,
-    Editor,
+    Inko,
     Footer
   }
 })
