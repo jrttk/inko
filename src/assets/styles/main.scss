@@ -44,3 +44,14 @@ a {
   font-weight: 600;
   display: inline-block;
 }
+
+// Buttons
+
+.btn-danger {
+  background: #cb2431 !important;
+  color: #fff !important;
+
+  &:hover {
+    background: #f7404f !important;
+  }
+}

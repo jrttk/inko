@@ -8,7 +8,7 @@
     </div>
     <p>An online markdown editor built with Vue.js, Primer.css & Marked.js ✨</p>
     <div class="buttons">
-      <a href="https://github.com/jrttk/inko" class="btn btn-sm" type="button">
+      <a href="https://github.com/jrttk/inko" class="btn btn-sm" target="_blank" type="button">
         View source code
         <i v-html="$octicons['mark-github'].toSVG()" class="ml-1"></i>
       </a>

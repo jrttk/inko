@@ -22,6 +22,11 @@
       >Preview</button>
     </div>
     <div>
+      <button class="btn btn-sm mr-2 btn-upload" type="button">
+        Import .md
+        <i v-html="$octicons['markdown'].toSVG()" class="ml-1"></i>
+        <input type="file" name="markdownFile" @input="$emit('importFile', $event)" />
+      </button>
       <button class="btn btn-sm btn-primary mr-2" type="button" @click="downloadMDFile">
         Export to .md
         <i v-html="$octicons['markdown'].toSVG()" class="ml-1"></i>
@@ -43,7 +48,6 @@ export default class InkoTool extends Vue {
   // Methods
   downloadMDFile() {
     let { storedContent } = localStorage;
-
     let element = document.createElement("a");
 
     element.setAttribute(
@@ -53,10 +57,9 @@ export default class InkoTool extends Vue {
 
     element.setAttribute("download", "export.md");
     element.style.display = "none";
-    document.body
-      .appendChild(element)
-      .click()
-    document.body.removeChild(element)
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
   }
 }
 </script>
@@ -98,6 +101,21 @@ export default class InkoTool extends Vue {
         flex: 1;
       }
     }
+  }
+}
+
+.btn-upload {
+  position: relative;
+  cursor: pointer;
+
+  input {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
   }
 }
 </style>

@@ -5,6 +5,7 @@
         :mode="mode"
         @modeChange="(selectedMode) => mode = selectedMode"
         @reset="reset()"
+        @importFile="importFile"
       />
       <div class="inko" :class="[`-${mode}-mode`]">
         <!-- Tooltips -->
@@ -91,14 +92,32 @@ export default class Inko extends Vue {
   }
 
   addTab(e) {
+    // Prevent default tab behavior
     e.preventDefault();
+
+    // Get cursor's start and end point
     let start = this.content.slice(0, event.target.selectionStart);
     let end = this.content.slice(event.target.selectionStart);
+
+    // Assign new content mixed with tab
     this.content = `${start}  ${end}`;
     e.target.selectionEnd = e.target.selectionStart + 1;
   }
 
+  importFile(e) {
+    // Create reader var from FileReader class for reading the .md file content
+    const reader = new FileReader();
+
+    // Assign functions for each FileReader hooks
+    reader.onload = event => this.content = event.target.result; // desired file content
+    reader.onerror = error => reject(error);
+
+    // Read file
+    reader.readAsText(e.target.files[0]);
+  }
+
   // Lifecycles
+  
   created() {
     // TODO: Add line number feature
     // let [ textarea ] = document.getElementsByClassName('inko-editor-textarea');
@@ -108,14 +127,17 @@ export default class Inko extends Vue {
     // window.addEventListener('scroll', this.handleScroll);
   }
 
-  destroyed() {
-    window.removeEventListener("scroll", this.handleScroll);
-  }
+  // destroyed() {
+  //   window.removeEventListener("scroll", this.handleScroll);
+  // }
 
   async mounted() {
+    // Check if there is a storedContent
     if (!localStorage.storedContent) {
+      // If not then load default content
       this.content = defaultContent;
     } else {
+      // If exists then load the previous content
       this.content = localStorage.storedContent;
     }
   }
@@ -159,7 +181,8 @@ export default class Inko extends Vue {
         display: flex;
         flex-direction: column;
 
-        > .inko-editor, > .inko-content {
+        > .inko-editor,
+        > .inko-content {
           flex: 1 50%;
           height: auto !important;
         }
