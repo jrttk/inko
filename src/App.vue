@@ -16,17 +16,17 @@
 
 <script type="ts">
 // Components
-import Testing from "./components/Testing";
-import Header from "./components/Header";
-import Inko from "./components/Inko/Inko";
-import Footer from "./components/Footer";
+import Testing from './components/Testing'
+import Header from './components/Header'
+import Inko from './components/Inko/Inko'
+import Footer from './components/Footer'
 
 // Vue
-import Component from "vue-class-component";
-import { Vue, Prop, Watch } from "vue-property-decorator";
+import Component from 'vue-class-component'
+import { Vue, Prop, Watch } from 'vue-property-decorator'
 
 // Marked
-import marked from "marked";
+import marked from 'marked'
 
 @Component({
   components: {

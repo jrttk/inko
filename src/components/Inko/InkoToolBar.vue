@@ -38,28 +38,28 @@
 
 <script lang="ts">
 // Vue
-import Component from "vue-class-component";
-import { Vue, Prop } from "vue-property-decorator";
+import Component from 'vue-class-component'
+import { Vue, Prop } from 'vue-property-decorator'
 
 @Component({})
 export default class InkoTool extends Vue {
   @Prop(String) readonly mode!: string;
 
   // Methods
-  downloadMDFile() {
-    let { storedContent } = localStorage;
-    let element = document.createElement("a");
+  downloadMDFile () {
+    let { storedContent } = localStorage
+    let element = document.createElement('a')
 
     element.setAttribute(
-      "href",
-      "data:text/markdown;charset=utf-8," + encodeURIComponent(storedContent)
-    );
+      'href',
+      'data:text/markdown;charset=utf-8,' + encodeURIComponent(storedContent)
+    )
 
-    element.setAttribute("download", "export.md");
-    element.style.display = "none";
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element);
+    element.setAttribute('download', 'export.md')
+    element.style.display = 'none'
+    document.body.appendChild(element)
+    element.click()
+    document.body.removeChild(element)
   }
 }
 </script>

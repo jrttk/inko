@@ -40,17 +40,17 @@
 
 <script type="ts">
 // Default Markdown Content
-import defaultContent from "../../assets/default.md";
+import defaultContent from '../../assets/default.md'
 
 // Components
-import InkoToolBar from "./InkoToolBar";
+import InkoToolBar from './InkoToolBar'
 
 // Vue
-import Component from "vue-class-component";
-import { Vue, Prop, Watch } from "vue-property-decorator";
+import Component from 'vue-class-component'
+import { Vue, Prop, Watch } from 'vue-property-decorator'
 
 // Marked
-import marked from "marked";
+import marked from 'marked'
 
 @Component({
   components: {
@@ -59,20 +59,20 @@ import marked from "marked";
 })
 export default class Inko extends Vue {
   // Data
-  content = "";
-  lineNumber = "";
+  content = '';
+  lineNumber = '';
   fullscreen = false;
-  mode = "split";
+  mode = 'split';
 
   // Compute
-  get renderedContent() {
-    return marked(this.content);
+  get renderedContent () {
+    return marked(this.content)
   }
 
   // Watch
-  @Watch("content")
-  function(newVal, oldVal) {
-    localStorage.storedContent = newVal;
+  @Watch('content')
+  function (newVal, oldVal) {
+    localStorage.storedContent = newVal
 
     // TODO: Add line number feature
     // Get linenumber
@@ -81,44 +81,46 @@ export default class Inko extends Vue {
   }
 
   // Methods
-  reset() {
-    this.content = "";
+  reset () {
+    this.content = ''
   }
 
-  handleScroll(e) {
+  handleScroll (e) {
     // TODO: Add line number feature
-    let [line] = document.getElementsByClassName("inko-editor-line");
-    line.scroll(0, e.target.scrollTop);
+    let [line] = document.getElementsByClassName('inko-editor-line')
+    line.scroll(0, e.target.scrollTop)
   }
 
-  addTab(e) {
+  addTab (e) {
     // Prevent default tab behavior
-    e.preventDefault();
+    e.preventDefault()
 
     // Get cursor's start and end point
-    let start = this.content.slice(0, event.target.selectionStart);
-    let end = this.content.slice(event.target.selectionStart);
+    let start = this.content.slice(0, event.target.selectionStart)
+    let end = this.content.slice(event.target.selectionStart)
 
     // Assign new content mixed with tab
-    this.content = `${start}  ${end}`;
-    e.target.selectionEnd = e.target.selectionStart + 1;
+    this.content = `${start}  ${end}`
+    e.target.selectionEnd = e.target.selectionStart + 1
   }
 
-  importFile(e) {
+  importFile (e) {
     // Create reader var from FileReader class for reading the .md file content
-    const reader = new FileReader();
+    const reader = new FileReader()
 
     // Assign functions for each FileReader hooks
-    reader.onload = event => this.content = event.target.result; // desired file content
-    reader.onerror = error => reject(error);
+    reader.onload = event => {
+      this.content = event.target.result
+    }
+    reader.onerror = error => reject(error)
 
     // Read file
-    reader.readAsText(e.target.files[0]);
+    reader.readAsText(e.target.files[0])
   }
 
   // Lifecycles
-  
-  created() {
+
+  created () {
     // TODO: Add line number feature
     // let [ textarea ] = document.getElementsByClassName('inko-editor-textarea');
     // let [ line ] = document.getElementsByClassName('inko-editor-line');
@@ -131,14 +133,14 @@ export default class Inko extends Vue {
   //   window.removeEventListener("scroll", this.handleScroll);
   // }
 
-  async mounted() {
+  async mounted () {
     // Check if there is a storedContent
     if (!localStorage.storedContent) {
       // If not then load default content
-      this.content = defaultContent;
+      this.content = defaultContent
     } else {
       // If exists then load the previous content
-      this.content = localStorage.storedContent;
+      this.content = localStorage.storedContent
     }
   }
 }
