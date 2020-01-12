@@ -3,9 +3,12 @@
     <div class="inko-wrapper" :class="[fullscreen ? '-fullscreen' : null]">
       <InkoToolBar
         :mode="mode"
+        :font-families="fontFamilies"
+        :preview-font-family="editorFontFamily"
         @modeChange="(selectedMode) => mode = selectedMode"
         @reset="reset()"
         @importFile="importFile"
+        @selectFontFamily="setEditorFontFamily"
       />
       <div class="inko" :class="[`-${mode}-mode`]">
         <!-- Tooltips -->
@@ -24,6 +27,7 @@
             <textarea
               v-model="content"
               class="inko-editor-textarea"
+              :style="{ fontFamily: editorFontFamily }"
               @keydown.tab.prevent="addTab($event)"
             ></textarea>
           </div>
@@ -63,6 +67,8 @@ export default class Inko extends Vue {
   lineNumber = '';
   fullscreen = false;
   mode = 'split';
+  fontFamilies = ['Sans Serif', 'Roboto Mono']
+  editorFontFamily = 'Roboto Mono'
 
   // Compute
   get renderedContent () {
@@ -116,6 +122,10 @@ export default class Inko extends Vue {
 
     // Read file
     reader.readAsText(e.target.files[0])
+  }
+
+  setEditorFontFamily (value) {
+    this.editorFontFamily = value
   }
 
   // Lifecycles
@@ -330,7 +340,7 @@ export default class Inko extends Vue {
       height: 100%;
       overflow: hidden;
       overflow-y: scroll;
-      font-family: "Roboto Mono" !important;
+      // font-family: "Roboto Mono" !important;
       color: #fff;
       background: #282c34;
       outline: none;

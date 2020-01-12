@@ -20,6 +20,29 @@
         :class="{ 'disabled': mode === 'preview' }"
         @click="$emit('modeChange', 'preview')"
       >Preview</button>
+      <details
+        class="dropdown details-reset details-overlay d-inline-block"
+        style="margin-left: 24px;">
+        <summary class="btn btn-sm" aria-haspopup="true">
+          {{ previewFontFamily }}
+          <div class="dropdown-caret"></div>
+        </summary>
+
+        <ul class="dropdown-menu dropdown-menu-se">
+          <li
+            v-for="(fontFamily, index) in fontFamilies"
+            :key="index"
+            style="line-height: 1.5;">
+            <a
+              class="dropdown-item"
+              style="text-align: left;"
+              href="#"
+              @click="$emit('selectFontFamily', fontFamily)">
+              {{ fontFamily }}
+            </a>
+          </li>
+        </ul>
+      </details>
     </div>
     <div>
       <button class="btn btn-sm mr-2 btn-upload" type="button">
@@ -44,6 +67,8 @@ import { Vue, Prop } from 'vue-property-decorator'
 @Component({})
 export default class InkoTool extends Vue {
   @Prop(String) readonly mode!: string;
+  @Prop(String) readonly previewFontFamily!: string;
+  @Prop(Array) readonly fontFamilies!: Array<string>;
 
   // Methods
   downloadMDFile () {
