@@ -67,7 +67,14 @@ export default class Inko extends Vue {
   lineNumber = '';
   fullscreen = false;
   mode = 'split';
-  fontFamilies = ['Sans Serif', 'Roboto Mono']
+  fontFamilies = [
+    'Roboto Mono',
+    'Open Sans',
+    'Montserrat',
+    'Source Sans Pro',
+    'Raleway',
+    'Poppins'
+  ]
   editorFontFamily = 'Roboto Mono'
 
   // Compute
