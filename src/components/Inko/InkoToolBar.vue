@@ -27,19 +27,19 @@
         </svg>
         <details class="ml-2 dropdown details-reset details-overlay d-inline-block">
           <summary class="btn btn-sm" aria-haspopup="true">
-            {{ previewFontFamily }}
+            {{ editorFontFamily }}
             <div class="dropdown-caret"></div>
           </summary>
 
           <ul class="dropdown-menu dropdown-menu-se">
             <li
-              v-for="(fontFamily, index) in fontFamilies"
+              v-for="(fontFamily, index) in editorFontFamilies"
               :key="index"
               class="lh-default">
               <a
                 class="text-left dropdown-item"
                 href="#"
-                @click="$emit('selectFontFamily', fontFamily)">
+                @click="$emit('update:editorFontFamily', fontFamily)">
                 {{ fontFamily }}
               </a>
             </li>
@@ -48,7 +48,31 @@
       </div>
 
     </div>
-    <div>
+    <div class="d-flex flex-items-center">
+      <svg class="font-icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="font" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+        <path fill="currentColor" d="M432 416h-23.41L277.88 53.69A32 32 0 0 0 247.58 32h-47.16a32 32 0 0 0-30.3 21.69L39.41 416H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16h-19.58l23.3-64h152.56l23.3 64H304a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zM176.85 272L224 142.51 271.15 272z" class=""></path>
+      </svg>
+      <details class="ml-2 mr-2 dropdown details-reset details-overlay d-inline-block">
+        <summary class="btn btn-sm" aria-haspopup="true">
+          {{ previewFontFamily }}
+          <div class="dropdown-caret"></div>
+        </summary>
+
+        <ul class="dropdown-menu dropdown-menu-se">
+          <li
+            v-for="(fontFamily, index) in previewFontFamilies"
+            :key="index"
+            class="lh-default">
+            <a
+              class="text-left dropdown-item"
+              href="#"
+              @click="$emit('update:previewFontFamily', fontFamily)">
+              {{ fontFamily }}
+            </a>
+          </li>
+        </ul>
+      </details>
+
       <button class="btn btn-sm mr-2 btn-upload" type="button">
         Import .md
         <i v-html="$octicons['markdown'].toSVG()" class="ml-1"></i>
@@ -71,8 +95,10 @@ import { Vue, Prop } from 'vue-property-decorator'
 @Component({})
 export default class InkoTool extends Vue {
   @Prop(String) readonly mode!: string;
+  @Prop(String) readonly editorFontFamily!: string;
   @Prop(String) readonly previewFontFamily!: string;
-  @Prop(Array) readonly fontFamilies!: Array<string>;
+  @Prop(Array) readonly editorFontFamilies!: Array<string>;
+  @Prop(Array) readonly previewFontFamilies!: Array<string>;
 
   // Methods
   downloadMDFile () {
