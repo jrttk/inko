@@ -3,7 +3,7 @@
     <div class="inko-wrapper" :class="[fullscreen ? '-fullscreen' : null]">
       <InkoToolBar
         :mode="mode"
-        :font-families="fontFamilies"
+        :font-families="editorFontFamilies"
         :preview-font-family="editorFontFamily"
         @modeChange="(selectedMode) => mode = selectedMode"
         @reset="reset()"
@@ -67,14 +67,8 @@ export default class Inko extends Vue {
   lineNumber = '';
   fullscreen = false;
   mode = 'split';
-  fontFamilies = [
-    'Roboto Mono',
-    'Open Sans',
-    'Montserrat',
-    'Source Sans Pro',
-    'Raleway',
-    'Poppins'
-  ]
+  editorFontFamilies = ['Roboto Mono', 'Source Code Pro', 'IBM Plex Mono', 'Open Sans', 'Ubuntu Mono', 'Space Mono'];
+  previewFontFamilies = ['Montserrat', 'Source Sans Pro', 'Raleway', 'Poppins'];
   editorFontFamily = 'Roboto Mono'
 
   // Compute

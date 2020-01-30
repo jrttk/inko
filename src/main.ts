@@ -8,7 +8,10 @@ import './assets/styles/entry.scss'
 const webfont = require('webfontloader')
 webfont.load({
   google: {
-    families: ['Open Sans', 'Montserrat', 'Source Sans Pro', 'Raleway', 'Poppins']
+    families: [
+      'Roboto Mono', 'Source Code Pro', 'IBM Plex Mono', 'Open Sans', 'Ubuntu Mono', 'Space Mono',
+      'Montserrat', 'Source Sans Pro', 'Raleway', 'Poppins'
+    ]
   }
 })
 
