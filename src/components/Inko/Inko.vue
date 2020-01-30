@@ -3,6 +3,10 @@
     <div class="inko-wrapper" :class="[fullscreen ? '-fullscreen' : null]">
       <InkoToolBar
         :mode="mode"
+        :editor-font-family.sync="editorFontFamily"
+        :preview-font-family.sync="previewFontFamily"
+        :editor-font-families="editorFontFamilies"
+        :preview-font-families="previewFontFamilies"
         @modeChange="(selectedMode) => mode = selectedMode"
         @reset="reset()"
         @importFile="importFile"
@@ -24,6 +28,7 @@
             <textarea
               v-model="content"
               class="inko-editor-textarea"
+              :style="{ fontFamily: editorFontFamily }"
               @keydown.tab.prevent="addTab($event)"
             ></textarea>
           </div>
@@ -31,7 +36,11 @@
 
         <!-- Content Preview -->
         <div class="inko-content">
-          <div class="markdown-body" v-html="renderedContent"></div>
+          <div
+            class="markdown-body"
+            :style="{ fontFamily: previewFontFamily }"
+            v-html="renderedContent">
+          </div>
         </div>
       </div>
     </div>
@@ -63,6 +72,10 @@ export default class Inko extends Vue {
   lineNumber = '';
   fullscreen = false;
   mode = 'split';
+  editorFontFamilies = ['Roboto Mono', 'Source Code Pro', 'IBM Plex Mono', 'Open Sans', 'Ubuntu Mono', 'Space Mono'];
+  previewFontFamilies = ['Montserrat', 'Source Sans Pro', 'Raleway', 'Poppins'];
+  editorFontFamily = 'Roboto Mono';
+  previewFontFamily = 'Montserrat';
 
   // Compute
   get renderedContent () {
@@ -330,7 +343,7 @@ export default class Inko extends Vue {
       height: 100%;
       overflow: hidden;
       overflow-y: scroll;
-      font-family: "Roboto Mono" !important;
+      // font-family: "Roboto Mono" !important;
       color: #fff;
       background: #282c34;
       outline: none;
