@@ -3,12 +3,13 @@
     <div class="inko-wrapper" :class="[fullscreen ? '-fullscreen' : null]">
       <InkoToolBar
         :mode="mode"
-        :font-families="editorFontFamilies"
-        :preview-font-family="editorFontFamily"
+        :editor-font-family.sync="editorFontFamily"
+        :preview-font-family.sync="previewFontFamily"
+        :editor-font-families="editorFontFamilies"
+        :preview-font-families="previewFontFamilies"
         @modeChange="(selectedMode) => mode = selectedMode"
         @reset="reset()"
         @importFile="importFile"
-        @selectFontFamily="setEditorFontFamily"
       />
       <div class="inko" :class="[`-${mode}-mode`]">
         <!-- Tooltips -->
@@ -35,7 +36,11 @@
 
         <!-- Content Preview -->
         <div class="inko-content">
-          <div class="markdown-body" v-html="renderedContent"></div>
+          <div
+            class="markdown-body"
+            :style="{ fontFamily: previewFontFamily }"
+            v-html="renderedContent">
+          </div>
         </div>
       </div>
     </div>
@@ -69,7 +74,8 @@ export default class Inko extends Vue {
   mode = 'split';
   editorFontFamilies = ['Roboto Mono', 'Source Code Pro', 'IBM Plex Mono', 'Open Sans', 'Ubuntu Mono', 'Space Mono'];
   previewFontFamilies = ['Montserrat', 'Source Sans Pro', 'Raleway', 'Poppins'];
-  editorFontFamily = 'Roboto Mono'
+  editorFontFamily = 'Roboto Mono';
+  previewFontFamily = 'Montserrat';
 
   // Compute
   get renderedContent () {
@@ -123,10 +129,6 @@ export default class Inko extends Vue {
 
     // Read file
     reader.readAsText(e.target.files[0])
-  }
-
-  setEditorFontFamily (value) {
-    this.editorFontFamily = value
   }
 
   // Lifecycles
