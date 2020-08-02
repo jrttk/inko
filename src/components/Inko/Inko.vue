@@ -63,6 +63,8 @@ export default class Inko extends Vue {
   lineNumber = '';
   fullscreen = false;
   mode = 'split';
+  // define tab size
+  tabSize = '4';
 
   // Compute
   get renderedContent () {
@@ -94,14 +96,20 @@ export default class Inko extends Vue {
   addTab (e) {
     // Prevent default tab behavior
     e.preventDefault()
-
+    // Locate Cursor Position
+    const cursor = event.target.selectionStart
     // Get cursor's start and end point
     let start = this.content.slice(0, event.target.selectionStart)
     let end = this.content.slice(event.target.selectionStart)
-
+    // Get The Line Which the Cursor located
+    const cursorLine = start.lastIndexOf('\n') === -1 ? start : start.slice(start.lastIndexOf('\n') + 1)
+    // Caculate tabsize
+    let tabLength = cursorLine.length - parseInt(cursorLine.length / this.tabSize) * this.tabSize
+    tabLength = tabLength ? tabLength : this.tabSize
     // Assign new content mixed with tab
-    this.content = `${start}  ${end}`
-    e.target.selectionEnd = e.target.selectionStart + 1
+    this.content = `${start}` + ' '.repeat(tabLength) + `${end}`
+    // Position the cursor in the correct position
+    this.$nextTick(() => {event.target.selectionStart = cursor + tabLength; event.target.selectionEnd = cursor + tabLength})
   }
 
   importFile (e) {
